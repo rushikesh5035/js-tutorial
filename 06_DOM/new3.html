@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    function addLanguage(langName) {
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`;
+      document.querySelector(".language").appendChild(li);
+    }
+    addLanguage("Python");
+    addLanguage("Typescript");
+
+    // Optimize way
+    function addOptimizeLanguage(langName) {
+      const li = document.createElement("li");
+      //   const addElement = document.createTextNode(langName);
+      li.appendChild(document.createTextNode(langName));
+      document.querySelector(".language").appendChild(li);
+    }
+    addOptimizeLanguage("Ruby");
+    addOptimizeLanguage("Rust");
+
+    //Edit
+    const seclang = document.querySelector("li:nth-child(2)"); // select 2nd language
+    // seclang.innerHTML = "React";
+    const newLi = document.createElement("li"); // better way
+    newLi.textContent = "React";
+    seclang.replaceWith(newLi); // change 2nd lang
+
+    // Edit => another way
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.outerHTML = "<li>Typescript</li>";
+
+    // Remove
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove();
+  </script>
+</html>
